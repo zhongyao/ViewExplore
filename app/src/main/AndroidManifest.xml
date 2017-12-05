@@ -14,9 +14,32 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+
+                <data
+                    android:host="view"
+                    android:path="/main"
+                    android:scheme="hongri"/>
             </intent-filter>
         </activity>
         <activity android:name=".activity.ViewEventActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEWEVENTACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="view"
+                    android:path="/viewevent"
+                    android:scheme="hongri"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ViewTheoryActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEWTHEORYACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="view"
+                    android:path="/viewtheory"
+                    android:scheme="hongri"/>
+            </intent-filter>
         </activity>
     </application>
 
