@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.hongri.viewexplore.R;
 
+/**
+ * @author hongri
+ */
 public class ViewEventActivity extends AppCompatActivity {
 
     @Override

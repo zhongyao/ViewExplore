@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import com.hongri.viewexplore.R;
 
 
+/**
+ * @author hongri
+ */
 public class ViewTheoryFragment extends Fragment {
 
     @Override

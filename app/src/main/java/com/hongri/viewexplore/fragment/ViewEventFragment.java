@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.hongri.viewexplore.R;
 
+/**
+ * @author hongri
+ */
 public class ViewEventFragment extends Fragment {
 
 
