@@ -13,6 +13,9 @@ import android.view.View;
  * @date 2017/12/5
  */
 
+
+
+
 public class EventView extends View {
 
     private int left;
