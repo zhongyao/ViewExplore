@@ -30,6 +30,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
         gestureView = findViewById(R.id.gestureView);
         //eventView.setOnClickListener(this);
 
+        //可以用SimpleOnGestureListener自定义重写所需要的方法
         gestureDetector = new GestureDetector(this,this);
         gestureDetector.setIsLongpressEnabled(true);
         gestureDetector.setOnDoubleTapListener(this);
