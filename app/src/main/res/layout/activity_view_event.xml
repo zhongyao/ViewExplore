@@ -20,12 +20,19 @@
     <com.hongri.viewexplore.view.EventView
         android:id="@+id/eventView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:background="#0000ff"/>
+        android:background="#aaffff"/>
+
+    <View
+        android:id="@+id/gestureView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffaaff"/>
 
 </LinearLayout>

@@ -35,9 +35,11 @@ public class EventView extends View {
     private float yVelocity;
 
     private VelocityTracker velocityTracker;
+    private Context context;
 
     public EventView(Context context) {
         super(context);
+        this.context = context;
         Logger.d("构造方法1");
     }
 
