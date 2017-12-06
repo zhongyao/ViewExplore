@@ -28,11 +28,18 @@
         android:layout_marginTop="40dp"
         android:background="#aaffff"/>
 
+    <com.hongri.viewexplore.view.DrawEventView
+        android:id="@+id/drawEventView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#aaddaa"/>
+
     <View
         android:id="@+id/gestureView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:background="#ffaaff"/>
 
 </LinearLayout>

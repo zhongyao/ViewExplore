@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.hongri.viewexplore.R;
+import com.hongri.viewexplore.view.DrawEventView;
 import com.hongri.viewexplore.view.EventView;
 import com.hongri.viewexplore.view.Logger;
 
@@ -19,6 +20,7 @@ import com.hongri.viewexplore.view.Logger;
 public class ViewEventActivity extends AppCompatActivity implements View.OnClickListener,OnGestureListener,OnDoubleTapListener,OnTouchListener {
 
     private EventView eventView;
+    private DrawEventView drawEventView;
     private View gestureView;
     private GestureDetector gestureDetector;
     @Override
@@ -27,6 +29,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_view_event);
 
         eventView = (EventView)findViewById(R.id.eventView);
+        drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
         gestureView = findViewById(R.id.gestureView);
         //eventView.setOnClickListener(this);
 
