@@ -107,6 +107,7 @@ public class EventView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Logger.d("EventView--onTouchEvent");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Logger.d("ACTION_DOWN");

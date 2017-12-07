@@ -9,10 +9,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.hongri.viewexplore.R;
+import com.hongri.viewexplore.view.CustomLayoutOne;
+import com.hongri.viewexplore.view.CustomTextView;
+import com.hongri.viewexplore.view.CustomViewGroup;
 import com.hongri.viewexplore.view.DrawEventView;
 import com.hongri.viewexplore.view.EventView;
 import com.hongri.viewexplore.view.Logger;
-import com.hongri.viewexplore.view.ScrollerLayout;
 
 /**
  * @author hongri
@@ -22,9 +24,12 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     private EventView eventView;
     private DrawEventView drawEventView;
-    private ScrollerLayout scrollerLayout;
+    //private ScrollerLayout scrollerLayout;
     private View gestureView;
     private GestureDetector gestureDetector;
+    private CustomViewGroup viewGroup;
+    private CustomLayoutOne layoutOne;
+    private CustomTextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +37,24 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
         eventView = (EventView)findViewById(R.id.eventView);
         drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
-        scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
+        //scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
         gestureView = findViewById(R.id.gestureView);
+        viewGroup = (CustomViewGroup)findViewById(R.id.viewGroup);
+        layoutOne = (CustomLayoutOne)findViewById(R.id.layoutOne);
+        tv = (CustomTextView)findViewById(R.id.tv);
         //eventView.setOnClickListener(this);
+
+        /**
+         * 如果该View的onTouch返回false，则会调用该View的OnTouchEvent方法。
+         * 否则不调用。
+         * 可以得知OnTouchListener的优先级比OnTouchEvent的要高
+         */
+        //eventView.setOnTouchListener(new OnTouchListener() {
+        //    @Override
+        //    public boolean onTouch(View v, MotionEvent event) {
+        //        return true;
+        //    }
+        //});
 
         //可以用SimpleOnGestureListener自定义重写所需要的方法
         gestureDetector = new GestureDetector(this,this);
@@ -125,10 +145,15 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
+    //@Override
+    //public boolean onTouch(View v, MotionEvent event) {
+    //    boolean consume = gestureDetector.onTouchEvent(event);
+    //    return consume;
+    //}
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        boolean consume = gestureDetector.onTouchEvent(event);
-        return consume;
+        return false;
     }
 
     /**
@@ -164,5 +189,24 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     public boolean onDoubleTapEvent(MotionEvent e) {
         Logger.d("onDoubleTapEvent:"+e);
         return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Logger.d("onTouchEvent");
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+                break;
+            case MotionEvent.ACTION_UP:
+
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 }
