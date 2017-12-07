@@ -12,6 +12,7 @@ import com.hongri.viewexplore.R;
 import com.hongri.viewexplore.view.DrawEventView;
 import com.hongri.viewexplore.view.EventView;
 import com.hongri.viewexplore.view.Logger;
+import com.hongri.viewexplore.view.ScrollerLayout;
 
 /**
  * @author hongri
@@ -21,6 +22,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     private EventView eventView;
     private DrawEventView drawEventView;
+    private ScrollerLayout scrollerLayout;
     private View gestureView;
     private GestureDetector gestureDetector;
     @Override
@@ -30,6 +32,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
         eventView = (EventView)findViewById(R.id.eventView);
         drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
+        scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
         gestureView = findViewById(R.id.gestureView);
         //eventView.setOnClickListener(this);
 
