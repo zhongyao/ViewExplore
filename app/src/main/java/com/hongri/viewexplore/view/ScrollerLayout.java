@@ -21,7 +21,6 @@ public class ScrollerLayout extends ViewGroup {
     private Scroller mScroller;
     private  int mXDown;
     private int mXMove,mLastMove;
-    private int mLastX;
     public ScrollerLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -65,10 +64,12 @@ public class ScrollerLayout extends ViewGroup {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN:
+                    Logger.d("onInterceptTouchEvent--ACTION_DOWN");
                     mXDown = (int) ev.getRawX();
                     mLastMove = mXDown;
                 break;
             case MotionEvent.ACTION_MOVE:
+//                    Logger.d("onInterceptTouchEvent--ACTION_MOVE");
                     mXMove = (int) ev.getRawX();
                     mLastMove = mXMove;
                     if (Math.abs(mXMove - mXDown) > mTouchSlop){
@@ -77,7 +78,7 @@ public class ScrollerLayout extends ViewGroup {
 
                 break;
             case MotionEvent.ACTION_UP:
-
+                    Logger.d("onInterceptTouchEvent--ACTION_UP");
                 break;
             default:
                 break;
@@ -90,16 +91,20 @@ public class ScrollerLayout extends ViewGroup {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-
+                Logger.d("onTouchEvent--ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
+//                Logger.d("onTouchEvent--ACTION_MOVE");
                 mXMove = (int) event.getRawX();
                 int mScrollX = mLastMove - mXMove;
-                if (getScaleX() + mScrollX < leftBorder){
+                Logger.d("mXMove:"+mXMove+" mLastMove:"+mLastMove + " getScrollX:"+getScrollX());
+                if (getScrollX() + mScrollX < leftBorder){
                     scrollTo(leftBorder,0);
+                    Logger.d("leftBorder:"+leftBorder);
                     return true;
-                }else if (getScaleX() + mScrollX + getWidth()> rightBorder){
+                }else if (getScrollX() + mScrollX + getWidth()> rightBorder){
                     scrollTo(rightBorder-getWidth(),0);
+                    Logger.d("rightBorder:"+rightBorder);
                     return true;
                 }
 
@@ -107,6 +112,7 @@ public class ScrollerLayout extends ViewGroup {
                 mLastMove = mXMove;
                 break;
             case MotionEvent.ACTION_UP:
+                Logger.d("onTouchEvent--ACTION_UP");
                 // 当手指抬起时，根据当前的滚动值来判定应该滚动到哪个子控件的界面
                 int targetIndex = (getScrollX() + getWidth() / 2) / getWidth();
                 int dx = targetIndex * getWidth() - getScrollX();
@@ -118,7 +124,7 @@ public class ScrollerLayout extends ViewGroup {
             default:
                 break;
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+
 import com.hongri.viewexplore.R;
 import com.hongri.viewexplore.view.CustomLayoutOne;
 import com.hongri.viewexplore.view.CustomTextView;
@@ -15,6 +16,7 @@ import com.hongri.viewexplore.view.CustomViewGroup;
 import com.hongri.viewexplore.view.DrawEventView;
 import com.hongri.viewexplore.view.EventView;
 import com.hongri.viewexplore.view.Logger;
+import com.hongri.viewexplore.view.ScrollerLayout;
 
 /**
  * @author hongri
@@ -24,7 +26,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     private EventView eventView;
     private DrawEventView drawEventView;
-    //private ScrollerLayout scrollerLayout;
+    private ScrollerLayout scrollerLayout;
     private View gestureView;
     private GestureDetector gestureDetector;
     private CustomViewGroup viewGroup;
@@ -37,7 +39,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
         eventView = (EventView)findViewById(R.id.eventView);
         drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
-        //scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
+        scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
         gestureView = findViewById(R.id.gestureView);
         viewGroup = (CustomViewGroup)findViewById(R.id.viewGroup);
         layoutOne = (CustomLayoutOne)findViewById(R.id.layoutOne);
