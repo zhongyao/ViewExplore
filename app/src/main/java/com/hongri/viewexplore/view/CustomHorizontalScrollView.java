@@ -15,6 +15,7 @@ import android.widget.Scroller;
  */
 
 public class CustomHorizontalScrollView extends ViewGroup {
+    private static final String TAG = CustomHorizontalScrollView.class.getSimpleName() + ":";
     private int mChildrenSize;
     private int mChildWidth = 1440;
     private int mChildIndex;
@@ -106,7 +107,26 @@ public class CustomHorizontalScrollView extends ViewGroup {
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        intercepted = false;
+
+        /**
+         * 以下为内部拦截法
+         */
+        Logger.d(TAG + ev.getAction());
+
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            if (!mScroller.isFinished()) {
+                mScroller.abortAnimation();
+                return true;
+            }
+            return false;
+        } else {
+            return true;
+        }
+
+        /**
+         * 以下为外部拦截法代码
+         */
+        /*intercepted = false;
         int x = (int)ev.getX();
         int y = (int)ev.getY();
         switch (ev.getAction()) {
@@ -142,7 +162,7 @@ public class CustomHorizontalScrollView extends ViewGroup {
         mLastXIntercept = x;
         mLastYIntercept = y;
 
-        return intercepted;
+        return intercepted;*/
     }
 
     @Override
@@ -150,6 +170,7 @@ public class CustomHorizontalScrollView extends ViewGroup {
         mVelocityTracker.addMovement(event);
         int x = (int)event.getX();
         int y = (int)event.getY();
+        Logger.d(TAG + event.getAction());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {

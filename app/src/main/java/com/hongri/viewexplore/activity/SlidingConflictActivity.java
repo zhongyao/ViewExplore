@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import com.hongri.viewexplore.R;
 import com.hongri.viewexplore.adapter.RecyclerAdapter;
 import com.hongri.viewexplore.view.CustomHorizontalScrollView;
+import com.hongri.viewexplore.view.CustomRecyclerView;
 
 //import com.hongri.viewexplore.R;
 
@@ -27,7 +27,7 @@ public class SlidingConflictActivity extends AppCompatActivity {
     private static final String TAG = SlidingConflictActivity.class.getSimpleName();
     private LayoutInflater inflater;
     private CustomHorizontalScrollView containerScrollView;
-    private RecyclerView rv;
+    private CustomRecyclerView rv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class SlidingConflictActivity extends AppCompatActivity {
 
     private void createList(View layout) {
         //ListView lv = (ListView)layout.findViewById(R.id.lv);
-        rv = (RecyclerView)layout.findViewById(R.id.rv);
+        rv = (CustomRecyclerView)layout.findViewById(R.id.rv);
         ArrayList<String> datas = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             datas.add("android" + i);
