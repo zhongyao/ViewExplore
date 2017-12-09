@@ -23,7 +23,9 @@
         <activity android:name=".activity.ViewEventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEWEVENTACTIVITY"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
+
                 <data
                     android:host="view"
                     android:path="/viewevent"
@@ -33,10 +35,22 @@
         <activity android:name=".activity.ViewTheoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEWTHEORYACTIVITY"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
+
                 <data
                     android:host="view"
                     android:path="/viewtheory"
+                    android:scheme="hongri"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SlidingConflictActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SLIDINGCONFLICTACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="view"
+                    android:path="/slidingconflict"
                     android:scheme="hongri"/>
             </intent-filter>
         </activity>
