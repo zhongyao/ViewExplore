@@ -34,6 +34,8 @@ public class EventView extends View {
     private float xVelocity;
     private float yVelocity;
 
+    private int mXWidth,mXHeight;
+
     private VelocityTracker velocityTracker;
     private Context context;
 
@@ -102,6 +104,14 @@ public class EventView extends View {
         translationY = getTranslationY();
 
         Logger.d("translationX:" + translationX + " translationY:" + translationY);
+
+        /**
+         * View本身的宽度和高度
+         */
+        mXWidth = getWidth();
+        mXHeight = getHeight();
+        Logger.d("mXWidth:"+mXWidth + "mXHeight:"+mXHeight);
+
 
     }
 

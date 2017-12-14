@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 import com.hongri.viewexplore.R;
+import com.hongri.viewexplore.view.CustomDrawView;
 import com.hongri.viewexplore.view.CustomLayoutOne;
 import com.hongri.viewexplore.view.CustomTextView;
 import com.hongri.viewexplore.view.CustomViewGroup;
@@ -32,11 +33,13 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     private CustomViewGroup viewGroup;
     private CustomLayoutOne layoutOne;
     private CustomTextView tv;
+    private CustomDrawView drawView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
 
+        drawView = (CustomDrawView) findViewById(R.id.drawView);
         eventView = (EventView)findViewById(R.id.eventView);
         drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
         scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
