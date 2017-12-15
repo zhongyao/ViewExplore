@@ -36,28 +36,40 @@ public class CustomHorizontalScrollView extends ViewGroup {
 
     }
 
+    /**
+     * & 位运算符：二进制运算符&通过对两个操作数一位一位的比较产生一个新的值，对于每个位，只有两个操作数的对应位都为1时结果才为1
+     * << 左移运算符：用来将一个数的各二进制位全部左移若干位
+     *
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Logger.d(TAG + "widthMeasureSpec:" + widthMeasureSpec + " heightMeasureSpec:" + heightMeasureSpec);
         int measuredWidth = 0;
         int measuredHeight = 0;
         final int childCount = getChildCount();
         measureChildren(widthMeasureSpec, heightMeasureSpec);
 
-        int widthSpaceSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightSpaceSize = MeasureSpec.getSize(heightMeasureSpec);
+        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+
         int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+        Logger.d(TAG + " widthSpecMode:" + widthSpecMode + " widthSpecSize:" + widthSpecSize + " heightSpecMode:"
+            + heightSpecMode + " heightSpecSize:" + heightSpecSize);
+
         if (childCount == 0) {
             setMeasuredDimension(0, 0);
         } else if (heightSpecMode == MeasureSpec.AT_MOST) {
             final View childView = getChildAt(0);
             measuredHeight = childView.getMeasuredHeight();
-            setMeasuredDimension(widthSpaceSize, childView.getMeasuredHeight());
+            setMeasuredDimension(widthSpecSize, childView.getMeasuredHeight());
         } else if (widthSpecMode == MeasureSpec.AT_MOST) {
             final View childView = getChildAt(0);
             measuredWidth = childView.getMeasuredWidth() * childCount;
-            setMeasuredDimension(measuredWidth, heightSpaceSize);
+            setMeasuredDimension(measuredWidth, heightSpecSize);
         } else {
             final View childView = getChildAt(0);
             measuredWidth = childView.getMeasuredWidth() * childCount;
