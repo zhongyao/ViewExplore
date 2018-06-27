@@ -11,6 +11,8 @@ import android.view.View;
 /**
  * @author zhongyao
  * @date 2017/12/5
+ *
+ * 了解View的位置参数
  */
 
 public class EventView extends View {
@@ -34,7 +36,7 @@ public class EventView extends View {
     private float xVelocity;
     private float yVelocity;
 
-    private int mXWidth,mXHeight;
+    private int mXWidth, mXHeight;
 
     private VelocityTracker velocityTracker;
     private Context context;
@@ -110,8 +112,7 @@ public class EventView extends View {
          */
         mXWidth = getWidth();
         mXHeight = getHeight();
-        Logger.d("mXWidth:"+mXWidth + "mXHeight:"+mXHeight);
-
+        Logger.d("mXWidth:" + mXWidth + "mXHeight:" + mXHeight);
 
     }
 
@@ -153,8 +154,10 @@ public class EventView extends View {
             case MotionEvent.ACTION_UP:
                 Logger.d("ACTION_UP");
 
-                velocityTracker.clear();
-                velocityTracker.recycle();
+                if (velocityTracker != null) {
+                    velocityTracker.clear();
+                    //velocityTracker.recycle();
+                }
                 break;
             default:
                 break;

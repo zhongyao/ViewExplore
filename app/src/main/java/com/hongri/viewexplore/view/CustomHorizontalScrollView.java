@@ -223,6 +223,9 @@ public class CustomHorizontalScrollView extends ViewGroup {
         invalidate();
     }
 
+    /**
+     * Scroller本身并不能实现View的滑动，他需要配合View的computeScroll方法才能实现弹性滑动。
+     */
     @Override
     public void computeScroll() {
         super.computeScroll();

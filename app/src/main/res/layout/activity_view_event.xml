@@ -55,7 +55,7 @@
             android:id="@+id/scrollerLayout"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:visibility="gone">
+            android:visibility="visible">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -106,7 +106,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="#ffaaff"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
     </LinearLayout>
 <!--

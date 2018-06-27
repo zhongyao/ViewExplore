@@ -21,7 +21,7 @@ import com.hongri.viewexplore.view.ScrollerLayout;
 
 /**
  * @author hongri
- * 回顾View的事件体系
+ * 回顾View的事件体系<1>
  */
 public class ViewEventActivity extends AppCompatActivity implements View.OnClickListener,OnGestureListener,OnDoubleTapListener,OnTouchListener {
 
@@ -150,16 +150,16 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    //@Override
-    //public boolean onTouch(View v, MotionEvent event) {
-    //    boolean consume = gestureDetector.onTouchEvent(event);
-    //    return consume;
-    //}
-
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        return false;
+        boolean consume = gestureDetector.onTouchEvent(event);
+        return consume;
     }
+
+    //@Override
+    //public boolean onTouch(View v, MotionEvent event) {
+    //    return false;
+    //}
 
     /**
      * 一次严格的单击行为：
