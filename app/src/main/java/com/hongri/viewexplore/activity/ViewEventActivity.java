@@ -7,8 +7,11 @@ import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.View.OnTouchListener;
 
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.hongri.viewexplore.R;
 import com.hongri.viewexplore.view.CustomDrawView;
 import com.hongri.viewexplore.view.CustomLayoutOne;
@@ -21,9 +24,10 @@ import com.hongri.viewexplore.view.ScrollerLayout;
 
 /**
  * @author hongri
- * 回顾View的事件体系<1>
+ *         回顾View的事件体系<1>
  */
-public class ViewEventActivity extends AppCompatActivity implements View.OnClickListener,OnGestureListener,OnDoubleTapListener,OnTouchListener {
+public class ViewEventActivity extends AppCompatActivity
+    implements View.OnClickListener, OnGestureListener, OnDoubleTapListener, OnTouchListener {
 
     private EventView eventView;
     private DrawEventView drawEventView;
@@ -34,15 +38,16 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     private CustomLayoutOne layoutOne;
     private CustomTextView tv;
     private CustomDrawView drawView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
 
-        drawView = (CustomDrawView) findViewById(R.id.drawView);
+        drawView = (CustomDrawView)findViewById(R.id.drawView);
         eventView = (EventView)findViewById(R.id.eventView);
         drawEventView = (DrawEventView)findViewById(R.id.drawEventView);
-        scrollerLayout = (ScrollerLayout) findViewById(R.id.scrollerLayout);
+        scrollerLayout = (ScrollerLayout)findViewById(R.id.scrollerLayout);
         gestureView = findViewById(R.id.gestureView);
         viewGroup = (CustomViewGroup)findViewById(R.id.viewGroup);
         layoutOne = (CustomLayoutOne)findViewById(R.id.layoutOne);
@@ -62,7 +67,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
         //});
 
         //可以用SimpleOnGestureListener自定义重写所需要的方法
-        gestureDetector = new GestureDetector(this,this);
+        gestureDetector = new GestureDetector(this, this);
         gestureDetector.setIsLongpressEnabled(true);
         gestureDetector.setOnDoubleTapListener(this);
         //eventView.setOnTouchListener(this);
@@ -81,6 +86,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     /**
      * 用户按下屏幕就会触发
      * 由一个MotionEvent ACTION_DOWN触发
+     *
      * @param e
      * @return
      */
@@ -92,6 +98,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     /**
      * 手指按下屏幕，尚未松开或拖动
+     *
      * @param e
      */
     @Override
@@ -102,6 +109,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     /**
      * 一次单独的点击动作（不包含滑动等操作）
      * 由一个MotionEvent ACTION_UP触发
+     *
      * @param e
      * @return
      */
@@ -114,6 +122,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     /**
      * 拖动事件
      * 由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE触发
+     *
      * @param e1
      * @param e2
      * @param distanceX
@@ -128,18 +137,20 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     /**
      * 用户长按触摸屏，由多个MotionEvent ACTION_DOWN触发
+     *
      * @param e
      */
     @Override
     public void onLongPress(MotionEvent e) {
-        Logger.d("onLongPress:"+e);
+        Logger.d("onLongPress:" + e);
     }
 
     /**
      * 滑屏:
      * 用户按下触摸屏、快速移动后松开，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE, 1个ACTION_UP触发
-     * @param e1 第一个 ACTION_DOWN MotionEvent
-     * @param e2 最后一个ACTION_MOVE MotionEvent
+     *
+     * @param e1        第一个 ACTION_DOWN MotionEvent
+     * @param e2        最后一个ACTION_MOVE MotionEvent
      * @param velocityX x轴上的移动速度
      * @param velocityY y轴上的移动速度
      * @return
@@ -164,6 +175,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     /**
      * 一次严格的单击行为：
      * 如果触发了onSingleTapConfirmed那么只能是一次单击行为。
+     *
      * @param e
      * @return
      */
@@ -175,6 +187,7 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
 
     /**
      * 双击事件
+     *
      * @param e
      * @return
      */
@@ -187,19 +200,20 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     /**
      * 双击间隔中发生的动作:
      * 指触发onDoubleTap以后，在双击之间发生的其它动作，包含down、up和move事件
+     *
      * @param e
      * @return
      */
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
-        Logger.d("onDoubleTapEvent:"+e);
+        Logger.d("onDoubleTapEvent:" + e);
         return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Logger.d("onTouchEvent");
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
                 break;
@@ -213,5 +227,70 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /**
+         * 2、通过post可以将一个Runnable投递到消息队列的尾部，然后等待Looper调用此Runnable。
+         */
+        gestureView.post(new Runnable() {
+            @Override
+            public void run() {
+                int width = gestureView.getMeasuredWidth();
+                int height = gestureView.getMeasuredHeight();
+
+                Logger.d("方法2：" + "width:" + width + " height:" + height);
+
+            }
+        });
+
+        /**
+         * 3、当View的状态发生改变或者内部的View的可见性发生改变时，onGlobalLayout方法将会被调用。
+         */
+        ViewTreeObserver observer = gestureView.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                gestureView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width = gestureView.getMeasuredWidth();
+                int height = gestureView.getMeasuredHeight();
+
+                Logger.d("方法3：" + "width:" + width + " height:" + height);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        /**
+         * 4、view.measure(widthMeasureSpec,heightMeasureSpec)
+         */
+        int widthMeasureSpec = MeasureSpec.makeMeasureSpec(100,MeasureSpec.EXACTLY);
+        int heightMeasureSpec = MeasureSpec.makeMeasureSpec(100,MeasureSpec.EXACTLY);
+
+        gestureView.measure(widthMeasureSpec,heightMeasureSpec);
+
+    }
+
+    /**
+     * 1、通过在onWindowFocusChanged方法中获取某个View的宽、高
+     *
+     * @param hasFocus
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            int width = gestureView.getMeasuredWidth();
+            int height = gestureView.getMeasuredHeight();
+
+            Logger.d("方法1：" + "width:" + width + " height:" + height);
+        }
     }
 }
