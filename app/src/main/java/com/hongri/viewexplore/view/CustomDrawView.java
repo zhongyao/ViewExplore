@@ -1,11 +1,13 @@
 package com.hongri.viewexplore.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import com.hongri.viewexplore.R;
 
 /**
  * @author zhongyao
@@ -15,6 +17,14 @@ import android.view.View;
  * 1、onMeasure() 测量：确定测量的宽高
  * 2、onLayout() 布局：确定最终宽高及四个顶点的位置
  * 3、onDraw() 绘制：将View绘制到屏幕上
+ *
+ *
+ * attention:
+ *
+ * 1、继承自View或ViewGroup的控件，padding是默认无法生效的
+ * 解决方案：需要自己在代码中处理
+ * 2、直接继承自View的控件，如果不对View做特殊处理，那么使用wrap_content与match_parent的效果是一样的
+ * 解决方案：将宽、高设置一个默认的值
  */
 
 public class CustomDrawView extends View {
@@ -22,6 +32,8 @@ public class CustomDrawView extends View {
     private int mXPoint, mYPoint;
     private int mRadius;
     private int mViewWidth, mViewHeight;
+    private static final String TAG = CustomDrawView.class.getSimpleName() + " ";
+    private int mColor;
 
     /**
      * 自定义宽高
@@ -32,12 +44,17 @@ public class CustomDrawView extends View {
 
     public CustomDrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawCircleView);
+        mColor = typedArray.getColor(R.styleable.DrawCircleView_circle_color,Color.RED);
+        typedArray.recycle();
+
         init();
     }
 
     private void init() {
         mPaint = new Paint();
-        mPaint.setColor(Color.RED);
+        //mPaint.setColor(Color.RED);
+        mPaint.setColor(mColor);
     }
 
     /**
@@ -95,4 +112,19 @@ public class CustomDrawView extends View {
 
         canvas.drawCircle(paddingLeft + mViewWidth / 2, paddingTop + mViewHeight / 2, mRadius, mPaint);
     }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        Logger.d(TAG + "onAttachedToWindow:");
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        Logger.d(TAG + "onDetachedFromWindow:");
+    }
+
 }

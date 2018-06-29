@@ -293,4 +293,18 @@ public class ViewEventActivity extends AppCompatActivity
             Logger.d("方法1：" + "width:" + width + " height:" + height);
         }
     }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        Logger.d("onAttachedToWindow");
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+
+        Logger.d("onDetachedFromWindow");
+    }
 }
