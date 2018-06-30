@@ -123,7 +123,7 @@ public class CustomHorizontalScrollView extends ViewGroup {
         /**
          * 以下为内部拦截法
          */
-        Logger.d(TAG + ev.getAction());
+        /*Logger.d(TAG + ev.getAction());
 
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             if (!mScroller.isFinished()) {
@@ -133,12 +133,12 @@ public class CustomHorizontalScrollView extends ViewGroup {
             return false;
         } else {
             return true;
-        }
+        }*/
 
         /**
          * 以下为外部拦截法代码
          */
-        /*intercepted = false;
+        intercepted = false;
         int x = (int)ev.getX();
         int y = (int)ev.getY();
         switch (ev.getAction()) {
@@ -174,7 +174,7 @@ public class CustomHorizontalScrollView extends ViewGroup {
         mLastXIntercept = x;
         mLastYIntercept = y;
 
-        return intercepted;*/
+        return intercepted;
     }
 
     @Override
@@ -192,6 +192,7 @@ public class CustomHorizontalScrollView extends ViewGroup {
             case MotionEvent.ACTION_MOVE:
                 int deltaX = x - mLastX;
                 int deltaY = y - mLastY;
+                //这里是负值的原因：mSrollX表示屏幕外左边的View布局值(往右滑动表示，左边View布局值会变小，所以为-deltax)
                 scrollBy(-deltaX, 0);
                 break;
             case MotionEvent.ACTION_UP:
