@@ -20,10 +20,14 @@ public class CustomHorizontalScrollView extends ViewGroup {
     private int mChildWidth = 1440;
     private int mChildIndex;
     private Scroller mScroller;
-    //记录上次滑动的坐标
+    /**
+     * 记录上次滑动的坐标
+     */
     private int mLastX;
     private int mLastY;
-    //记录上次滑动的坐标（onInterceptTouchEvent）
+    /**
+     * 记录上次滑动的坐标（onInterceptTouchEvent）
+     */
     private int mLastXIntercept = 0;
     private int mLastYIntercept = 0;
     private boolean intercepted;
