@@ -6,6 +6,7 @@ android {
     defaultConfig {
         applicationId "com.hongri.viewexplore"
         minSdkVersion 22
+
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
