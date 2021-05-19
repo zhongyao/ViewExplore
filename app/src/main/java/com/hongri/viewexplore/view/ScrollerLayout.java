@@ -95,6 +95,9 @@ public class ScrollerLayout extends ViewGroup {
      * 从左向右滑，mScrollX为负值，从右向左滑，mScrollY为正值。
      * 从上向下滑，mScrollY为负值，从下向上滑，mScrollY为正值。
      *
+     * 关于getScrollX()可参考：
+     * https://blog.csdn.net/bigconvience/article/details/26697645?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-9.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-9.control
+     * https://blog.csdn.net/znouy/article/details/51338256?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
      * @param event
      * @return
      */
