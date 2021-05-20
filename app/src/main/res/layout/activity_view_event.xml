@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent">-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <!--
     1、margin属性是由父容器控制的
     2、padding属性默认是无法生效的，需要自己处理
@@ -18,41 +18,42 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="20dp"
-        app:circle_color = "#ffff00"
         android:background="@android:color/holo_blue_bright"
-        android:padding="20dp"/>
+        android:padding="20dp"
+        app:circle_color="#ffff00"
+        tools:visibility="gone" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="ViewEvent事件探索"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#00aa00"
-        android:visibility="gone"/>
+        android:visibility="gone" />
     <!--测试使用1440*2560机型，1dp=4px-->
     <com.hongri.viewexplore.view.EventView
         android:id="@+id/eventView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="40dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
         android:background="#aaffff"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.hongri.viewexplore.view.DrawEventView
         android:id="@+id/drawEventView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#aaddaa"
-        android:visibility="gone"/>
+        android:visibility="visible" />
 
     <com.hongri.viewexplore.view.ScrollerLayout
         android:id="@+id/scrollerLayout"
@@ -64,19 +65,19 @@
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#ff0000"/>
+            android:background="#ff0000" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#00ff00"/>
+            android:background="#00ff00" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#0000ff"/>
+            android:background="#0000ff" />
 
     </com.hongri.viewexplore.view.ScrollerLayout>
 
@@ -101,7 +102,7 @@
                 android:id="@+id/tv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="#a84000"/>
+                android:background="#a84000" />
 
         </com.hongri.viewexplore.view.CustomLayoutOne>
     </com.hongri.viewexplore.view.CustomViewGroup>
@@ -113,8 +114,33 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="#ffaaff"
-        android:visibility="visible"/>
+        android:visibility="gone" />
 
-</LinearLayout>
-    <!--
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:id="@+id/btnScrollTo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btnScrollBy"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/green" />
+
+    </LinearLayout>
+
+</LinearLayout><!--
     </ScrollView>-->

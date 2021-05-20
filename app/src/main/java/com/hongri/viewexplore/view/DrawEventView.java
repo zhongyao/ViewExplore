@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -87,7 +88,8 @@ public class DrawEventView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 //表示"移动到..."
-                //scrollTo((int)x,(int)20);
+                Logger.d("x:" + x);
+                scrollTo((int)x,(int)20);
                 break;
             default:
 

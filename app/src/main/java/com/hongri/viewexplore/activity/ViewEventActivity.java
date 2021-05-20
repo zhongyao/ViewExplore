@@ -12,6 +12,9 @@ import android.view.View.OnTouchListener;
 
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
 import com.hongri.viewexplore.R;
 import com.hongri.viewexplore.view.CustomDrawView;
 import com.hongri.viewexplore.view.CustomLayoutOne;
@@ -38,6 +41,8 @@ public class ViewEventActivity extends AppCompatActivity
     private CustomLayoutOne layoutOne;
     private CustomTextView tv;
     private CustomDrawView drawView;
+    private LinearLayout layout;
+    private Button btnScrollTo, btnScrollBy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,9 @@ public class ViewEventActivity extends AppCompatActivity
         viewGroup = (CustomViewGroup)findViewById(R.id.viewGroup);
         layoutOne = (CustomLayoutOne)findViewById(R.id.layoutOne);
         tv = (CustomTextView)findViewById(R.id.tv);
+        layout = findViewById(R.id.layout);
+        btnScrollTo = findViewById(R.id.btnScrollTo);
+        btnScrollBy = findViewById(R.id.btnScrollBy);
         //eventView.setOnClickListener(this);
 
         /**
@@ -75,12 +83,29 @@ public class ViewEventActivity extends AppCompatActivity
         gestureView.setFocusable(true);
         gestureView.setClickable(true);
         gestureView.setLongClickable(true);
+        layout.setOnClickListener(this);
+        btnScrollTo.setOnClickListener(this);
+        btnScrollBy.setOnClickListener(this);
 
     }
 
+    /***
+     * 不管是scrollTo()还是scrollBy()方法，滚动的都是该View内部（即此处的layout）的内容。
+     * @param v
+     */
     @Override
     public void onClick(View v) {
-
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnScrollTo:
+                layout.scrollTo(-20, -20);
+                break;
+            case R.id.btnScrollBy:
+                layout.scrollBy(-20, -20);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
