@@ -22,4 +22,10 @@
         android:layout_height="wrap_content"
         android:text="View滑动冲突"/>
 
+    <Button
+        android:id="@+id/btnOpen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="唤端"/>
+
 </LinearLayout>

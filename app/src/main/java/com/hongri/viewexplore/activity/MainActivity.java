@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
 import com.hongri.viewexplore.R;
+import com.hongri.viewexplore.utils.SchemeUtil;
 
 /**
  * @author hongri
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnEvent;
     private Button btnTheory;
     private Button btnSliding;
+    private Button btnOpen;
 
     private String uriEvent = "hongri://view/viewevent";
     private String eventAction = "android.intent.action.VIEWEVENTACTIVITY";
@@ -28,13 +31,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnEvent = (Button)findViewById(R.id.btnEvent);
-        btnTheory = (Button)findViewById(R.id.btnTheory);
-        btnSliding = (Button)findViewById(R.id.btnSliding);
+        btnEvent = (Button) findViewById(R.id.btnEvent);
+        btnTheory = (Button) findViewById(R.id.btnTheory);
+        btnSliding = (Button) findViewById(R.id.btnSliding);
+        btnOpen = findViewById(R.id.btnOpen);
 
         btnEvent.setOnClickListener(this);
         btnTheory.setOnClickListener(this);
         btnSliding.setOnClickListener(this);
+        btnOpen.setOnClickListener(this);
 
     }
 
@@ -61,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentSliding.setAction(slidingAction);
                 intentSliding.setData(Uri.parse(uriSliding));
                 startActivity(intentSliding);
+                break;
+
+            case R.id.btnOpen:
+                String uriString = "hongri://recyclerview:8888/welcome?id=100&name=yao";
+                if (SchemeUtil.isSchemeValid(this, uriString)) {
+                    Intent intentOpen = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
+                    startActivity(intentOpen);
+                }
                 break;
 
             default:
