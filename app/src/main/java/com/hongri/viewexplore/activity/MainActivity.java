@@ -1,6 +1,7 @@
 package com.hongri.viewexplore.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.hongri.viewexplore.R;
+import com.hongri.viewexplore.utils.DrawableUtil;
 import com.hongri.viewexplore.utils.SchemeUtil;
 
 /**
@@ -40,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTheory.setOnClickListener(this);
         btnSliding.setOnClickListener(this);
         btnOpen.setOnClickListener(this);
+
+
+        float[] radius = new float[] {100f, 100f, 100f, 100f, 0f, 0f, 0f, 0f};
+        btnSliding.setBackgroundDrawable(DrawableUtil.createRectangleDrawable2(Color.GREEN));
+        btnOpen.setBackgroundDrawable(DrawableUtil.createRectangleDrawable(Color.RED, Color.GRAY, 0,radius));
 
     }
 
