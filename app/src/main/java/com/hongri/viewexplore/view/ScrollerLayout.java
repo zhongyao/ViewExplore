@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -13,6 +14,8 @@ import android.widget.Scroller;
 /**
  * @author zhongyao
  * @date 2017/12/7
+ *
+ * 在继承自 ViewGroup 的子类中重写除 dispatchDraw() 以外的绘制方法时，可能需要调用 setWillNotDraw(false)；
  */
 
 public class ScrollerLayout extends ViewGroup {
@@ -29,11 +32,14 @@ public class ScrollerLayout extends ViewGroup {
         mScroller = new Scroller(context);
         //获取TouchSlop值
         mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(context));
+        //当明确知道一个ViewGroup需要通过onDraw来绘制内容时，我们需要显式地关闭，即设置为false。
+        setWillNotDraw(false);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Logger.d("ScrollerLayout ---> onMeasure");
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
@@ -45,6 +51,7 @@ public class ScrollerLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Logger.d("ScrollerLayout ---> onLayout");
         if (changed) {
             int childCount = getChildCount();
             for (int i = 0; i < childCount; i++) {
@@ -58,9 +65,21 @@ public class ScrollerLayout extends ViewGroup {
     }
 
     @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        Logger.d("ScrollerLayout ---> dispatchDraw");
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        Logger.d("ScrollerLayout ---> draw");
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        Logger.d("ScrollerLayout ---> onDraw");
     }
 
     @Override

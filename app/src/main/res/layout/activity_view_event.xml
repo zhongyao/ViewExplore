@@ -76,23 +76,23 @@
         android:layout_height="100dp"
         android:visibility="visible">
 
-        <Button
+        <com.hongri.viewexplore.view.CustomButton
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#ff0000" />
+             />
 
-        <Button
+        <com.hongri.viewexplore.view.CustomButton
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#00ff00" />
+             />
 
-        <Button
+        <com.hongri.viewexplore.view.CustomButton
             android:id="@+id/btn3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#0000ff" />
+            />
 
     </com.hongri.viewexplore.view.ScrollerLayout>
 
